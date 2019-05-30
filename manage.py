@@ -3,9 +3,10 @@
 import os
 import sys
 
+environment = os.environ.get('DJANGO_APPLICATION_ENV', 'development')
 
 def main():
-  os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
+  os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.{}'.format(environment))
   try:
     from django.core.management import execute_from_command_line
   except ImportError as exc:
