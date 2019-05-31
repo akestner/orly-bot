@@ -1,20 +1,15 @@
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
+import logging
 
-from .serializers import UserSerializer, GroupSerializer
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+class Orly(APIView):
+  """
+  View to handle Slack POST requests for the /orly slash command
+  """
+
+  def post(self, request, format=None):
+    logging.debug(request.data)
+    return Response(None, status=status.HTTP_200_OK)
