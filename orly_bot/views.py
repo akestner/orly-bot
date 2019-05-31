@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('testlogger')
 
 class Orly(APIView):
   """
