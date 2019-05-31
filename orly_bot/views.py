@@ -4,6 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+logger = logging.getLogger(__name__)
 
 class Orly(APIView):
   """
@@ -11,5 +12,5 @@ class Orly(APIView):
   """
 
   def post(self, request, format=None):
-    logging.debug(request.data)
+    logger.info(request.data)
     return Response(None, status=status.HTTP_200_OK)
